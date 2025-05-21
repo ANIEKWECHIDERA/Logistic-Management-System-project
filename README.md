@@ -31,14 +31,3 @@ The LMS aims to solve major logistics bottlenecks such as:
 - **Maps & Tracking:** Google Maps API / Mapbox
 
 ---
-
-## 🚦 Current Status
-
-- ✅ Project planning complete
-- ✅ First design draft submitted
-- 🟡 Landing page (desktop) completed
-- 🔜 Repository setup in progress
-
----
-
-## 📁 Folder Structure
