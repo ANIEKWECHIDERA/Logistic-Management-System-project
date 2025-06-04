@@ -3,7 +3,7 @@ import { CiLinkedin, CiFacebook } from "react-icons/ci";
 
 const Footer = () => {
   return (
-    <div className="bg-[#1F2A44] w-full h-20 text-white flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0 sm:space-x-4 p-7">
+    <div className="bg-[#1F2A44] w-full text-white flex flex-col sm:flex-row items-center justify-between space-y-2 sm:space-y-0 sm:space-x-4 p-7">
       <p>© 2025 LMS. All rights reserved.</p>
       <ul className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
         <li>About</li>
