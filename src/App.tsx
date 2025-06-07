@@ -12,7 +12,7 @@ const App = () => {
     <div className="flex flex-col justify-center items-center font-montserrat">
         <Header />
       <div className="flex flex-col space-between px-20 space-y-32">
-        
+         
         <HeroSection />
       
         {/* <Button2
