@@ -32,7 +32,7 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="relative z-50 w-full">
+    <header className="relative z-50 w-full px-16">
       {/* Desktop Nav */}
       <nav className="hidden md:flex justify-between items-center p-7 w-full bg-white">
         <h3 className="font-bold text-xl text-[#FF6A00]">LOGO</h3>
