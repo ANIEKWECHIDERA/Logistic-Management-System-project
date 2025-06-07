@@ -64,6 +64,7 @@ const Header = () => {
           />
           <Button2
             text="Log In"
+            textColor="text-[#2563EB]"
             classname="hover:bg-[#1E40AF] w-32 bg-white border border-[#2563EB] text-[#2563EB] hover:text-white hover:border-white"
           />
         </div>

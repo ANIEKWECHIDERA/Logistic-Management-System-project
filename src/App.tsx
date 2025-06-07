@@ -1,27 +1,36 @@
-import Button from "./components/shared/Button";
+
 import Button2 from "./components/shared/Button2";
 import TestimonialCard from "./components/shared/TestimonialCard";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HeroSection from "./landingPage/HeroSection";
+import CardSection from "./landingPage/CardSection"
+import Features from "./landingPage/Features";
 
 const App = () => {
   return (
-    <div className="flex flex-col space-y-7 justify-center items-center h-screen bg-gray-100">
+    <div className="flex flex-col space-y-7 justify-center items-center px-16 font-montserrat">
+      
       <Header />
-      <Button
-        text={"Get Started Button"}
-        classname={"hover:bg-[#1E40AF] bg-[#2563EB] w-52"}
-      />
-      <Button2
+      
+      <HeroSection />
+     
+      {/* <Button2
         text={"Sign up"}
         classname={"hover:bg-[#1E40AF] w-32 bg-[#2563EB] "}
-      />
+      /> */}
+
+      <Features />
+
+      <CardSection />
+
       <TestimonialCard
         name="Jane Doe"
         position="Software Engineer"
         testimonial="This platform has greatly improved my productivity!"
         img="https://via.placeholder.com/150"
       />
+     
       <Footer />
     </div>
   );
