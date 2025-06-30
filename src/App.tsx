@@ -5,30 +5,21 @@ import Footer from "./components/Footer";
 import HeroSection from "./landingPage/HeroSection";
 import CardSection from "./landingPage/CardSection";
 import Features from "./landingPage/Features";
+import TestimonialSection from "./landingPage/TestimonialSection";
 
 const App = () => {
   return (
     <div className="flex flex-col justify-center items-center font-montserrat">
       <Header />
-      <div className="flex flex-col space-between px-20 space-y-32">
+      <div className="flex flex-col w-[90%] lg:w-full space-between lg:px-20 space-y-4 lg:space-y-32">
         <HeroSection />
-
-        {/* <Button2
-          text={"Sign up"}
-          classname={"hover:bg-[#1E40AF] w-32 bg-[#2563EB] "}
-        /> */}
 
         <Features />
 
         <CardSection />
       </div>
 
-      <TestimonialCard
-        name="Jane Doe"
-        position="Software Engineer"
-        testimonial="This platform has greatly improved my productivity!"
-        img="https://via.placeholder.com/150"
-      />
+      <TestimonialSection />
 
       <Footer />
     </div>

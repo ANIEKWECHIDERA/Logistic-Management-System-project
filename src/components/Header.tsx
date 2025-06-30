@@ -32,10 +32,20 @@ const Header = () => {
   }, [isMenuOpen]);
 
   return (
-    <header className="relative z-50 w-full px-16">
-      {/* Desktop Nav */}
-      <nav className="hidden md:flex justify-between items-center p-7 w-full bg-white">
-        <h3 className="font-bold text-xl text-[#FF6A00]">LOGO</h3>
+    <header className="relative z-50 w-full px-4 sm:px-8 md:px-16">
+      {/* Desktop Navigation */}
+      <nav
+        className="hidden md:flex justify-between items-center py-6 w-full bg-white"
+        aria-label="Primary navigation"
+      >
+        <a
+          href="/"
+          className="text-[#FF6A00] font-bold text-xl"
+          aria-label="Homepage"
+        >
+          LOGO
+        </a>
+
         <ul className="flex space-x-10">
           {["About", "Features", "Contact"].map((link) => (
             <motion.li
@@ -47,16 +57,19 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <span>{link}</span>
-              <motion.div
-                className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-600"
-                initial={{ width: 0 }}
-                animate={{ width: activeLink === link ? "100%" : 0 }}
-                transition={{ duration: 0.3 }}
-              />
+              <button className="relative focus:outline-none">
+                {link}
+                <motion.div
+                  className="absolute bottom-0 left-0 w-full h-[2px] bg-blue-600"
+                  initial={{ width: 0 }}
+                  animate={{ width: activeLink === link ? "100%" : 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </button>
             </motion.li>
           ))}
         </ul>
+
         <div className="flex space-x-4">
           <Button2
             text="Sign up"
@@ -64,25 +77,34 @@ const Header = () => {
           />
           <Button2
             text="Log In"
-            textColor="text-[#2563EB]"
             classname="hover:bg-[#1E40AF] w-32 bg-white border border-[#2563EB] text-[#2563EB] hover:text-white hover:border-white"
           />
         </div>
       </nav>
 
       {/* Mobile Header */}
-      <div className="md:hidden flex justify-between items-center p-7 bg-white">
-        <h3 className="font-bold text-xl text-[#FF6A00]">LOGO</h3>
+      <nav
+        className="md:hidden flex justify-between items-center py-6 bg-white"
+        aria-label="Mobile navigation"
+      >
+        <a
+          href="/"
+          className="text-[#FF6A00] font-bold text-xl"
+          aria-label="Homepage"
+        >
+          LOGO
+        </a>
         <button
           onClick={() => setIsMenuOpen(true)}
           aria-label="Open menu"
           title="Open menu"
+          className="text-gray-700"
         >
           <HiMenuAlt3 size={28} />
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Sidebar and Backdrop */}
+      {/* Mobile Sidebar & Backdrop */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
@@ -93,18 +115,21 @@ const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
 
             {/* Sidebar */}
-            <motion.div
+            <motion.aside
               ref={sidebarRef}
-              className="fixed top-0 right-0 h-full bg-white w-[60%] p-6 flex flex-col space-y-6 z-50 shadow-lg"
+              className="fixed top-0 right-0 h-full bg-white w-[80%] max-w-sm p-6 flex flex-col z-50 shadow-lg"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
+              role="dialog"
+              aria-modal="true"
             >
-              <div className="flex justify-between items-center mb-6">
+              <header className="flex justify-between items-center mb-6">
                 <h3 className="font-bold text-xl">Menu</h3>
                 <button
                   onClick={() => setIsMenuOpen(false)}
@@ -113,18 +138,24 @@ const Header = () => {
                 >
                   <HiX size={28} />
                 </button>
-              </div>
+              </header>
+
               <ul className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
-                  <li
-                    key={link}
-                    className="text-lg cursor-pointer"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link}
+                  <li key={link}>
+                    <button
+                      className="text-lg text-left w-full"
+                      onClick={() => {
+                        handleLinkClick(link);
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {link}
+                    </button>
                   </li>
                 ))}
               </ul>
+
               <div className="mt-10 flex flex-col space-y-4">
                 <Button2 text="Sign up" classname="w-full bg-[#2563EB]" />
                 <Button2
@@ -132,7 +163,7 @@ const Header = () => {
                   classname="w-full bg-white border border-[#2563EB] text-[#2563EB] hover:text-white hover:bg-[#2563EB]"
                 />
               </div>
-            </motion.div>
+            </motion.aside>
           </>
         )}
       </AnimatePresence>
