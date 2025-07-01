@@ -4,10 +4,10 @@ type ButtonProps = {
   textColor?: string;
 };
 
-const Button2 = ({ text, classname = "", textColor}: ButtonProps) => {
+const Button2 = ({ text, classname = "", textColor }: ButtonProps) => {
   return (
     <div
-      className={`transition-colors duration-200 ease-in-out rounded-lg h-14 text-center flex justify-center text-white items-center ${classname}`}
+      className={`transition-colors duration-200 ease-in-out rounded-lg h-14 text-center flex justify-center cursor-pointer items-center ${classname}`}
     >
       <div className={`flex items-center ${textColor}`}>{text}</div>
     </div>

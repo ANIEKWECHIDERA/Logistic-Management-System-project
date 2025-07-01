@@ -3,15 +3,21 @@ import imgOne from "../assets/image-one.jpg";
 
 const HeroSection = () => {
   return (
-    <main className="flex flex-col lg:flex-row space-y-3 ">
+    <main
+      id="about"
+      className="flex flex-col lg:flex-row space-y-10 lg:space-y-0 "
+    >
       <div className="flex flex-col space-y-10 w-full lg:w-[70%]">
-        <div className="flex flex-col space-y-5 mx-auto w-full lg:w-[95%]">
-          <h1 className="font-bold text-2xl lg:text-7xl text-center lg:text-left font-montserrat">
+        <div
+          className="flex flex-col space-y-5 mx-auto w-full lg:pr-16
+        "
+        >
+          <h1 className="font-extrabold text-2xl lg:text-7xl text-center lg:text-left font-montserrat px-4 lg:px-0">
             <span className="text-[#FF6A00]">Simplify</span> and{" "}
             <span className="text-[#FF6A00]">Grow</span> Your Logistics
             Operations with LMS
           </h1>
-          <p className="text-[#6B7280] text-[19px] text-center lg:text-left leading-normal">
+          <p className="text-[#6B7280] text-base lg:text-[19px] text-center lg:text-left leading-normal">
             {" "}
             From dispatch to delivery, LMS helps Nigerian businesses track
             shipments, manage fleets, and connect with verified riders or
@@ -36,8 +42,8 @@ const HeroSection = () => {
         </form>
         <div className="flex items-center justify-center lg:justify-start">
           <Button
-            text={"Get Started Button"}
-            classname={"hover:bg-[#1E40AF] bg-[#2563EB] w-52"}
+            text={"Get Started"}
+            classname={"hover:bg-[#1E40AF] bg-[#2563EB]"}
           />
         </div>
       </div>

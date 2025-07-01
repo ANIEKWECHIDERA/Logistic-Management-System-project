@@ -15,7 +15,7 @@ const cards = [
     color: "bg-[#EEF4FF]",
     img: imgFour,
     imgOrder: "order-2",
-    rounded: "rounded-r-xl",
+    rounded: "rounded-t-xl lg:rounded-r-xl lg:rounded-tl-none",
     alt: "Easy Fleet Management",
   },
 
@@ -25,11 +25,11 @@ const cards = [
     description:
       "Drive, deliver, and get paid. LMS connects you with delivery jobs that match your location and schedule.",
     button: "Join As A Rider",
-    textOrder: "order-2",
+    textOrder: "order-1 lg:order-2",
     color: "bg-[#FFF4EC]",
     img: imgTwo,
-    imgorder: "order-1",
-    rounded: "rounded-l-xl",
+    imgOrder: "order-2 lg:order-1",
+    rounded: "rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none",
     alt: "Earn As A Rider",
   },
   {
@@ -42,7 +42,7 @@ const cards = [
     color: "bg-[#E9FBF1]",
     img: imgThree,
     imgOrder: "order-2",
-    rounded: "rounded-r-xl",
+    rounded: "rounded-t-xl lg:rounded-r-xl lg:rounded-tl-none",
     alt: "Send Packages Easily",
   },
 ];
@@ -56,12 +56,12 @@ const CardSection = () => {
           className={` flex flex-col-reverse lg:flex-row ${card.color} rounded-xl `}
         >
           <div
-            className={`w-full lg:w-[50%] py-4 lg:py-14 px-4 lg:px-36 flex flex-col space-y-5 ${card.textOrder}`}
+            className={`w-full lg:w-[50%] py-4 lg:p-28 px-4 flex flex-col space-y-5  justify-center items-center${card.textOrder}`}
           >
             <h3 className="font-bold text-center lg:text-left text-lg lg:text-2xl ">
               {card.title}
             </h3>
-            <p className=" text-base text-center lg:text-left lg:text-xl text-[#6B7280]">
+            <p className=" text-base text-center lg:text-left lg:text-xl  text-[#000000]">
               {card.description}
             </p>
             <div className="flex items-center justify-center lg:justify-start">

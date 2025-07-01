@@ -1,5 +1,3 @@
-import Button2 from "./components/shared/Button2";
-import TestimonialCard from "./components/shared/TestimonialCard";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HeroSection from "./landingPage/HeroSection";

@@ -8,7 +8,7 @@ type ButtonProps = {
 const Button = ({ text, classname = "" }: ButtonProps) => {
   return (
     <div
-      className={`transition-colors duration-200 ease-in-out rounded-lg h-14 text-center flex justify-center text-white items-center ${classname}`}
+      className={`transition-colors duration-200 ease-in-out rounded-lg py-3 text-center px-6 flex justify-center cursor-pointer text-white items-center ${classname}`}
     >
       <div className="flex items-center">
         {text}
