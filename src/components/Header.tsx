@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import Button2 from "./shared/Button2";
@@ -6,6 +7,7 @@ import Button2 from "./shared/Button2";
 const navLinks = ["About", "Features", "Contact"];
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState<string>("About");
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -31,7 +33,7 @@ const Header = () => {
     const observerOptions = {
       root: null,
       rootMargin: "0px",
-      threshold: 0.6, // 60% visible
+      threshold: 0.6,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -79,9 +81,19 @@ const Header = () => {
               transition={{ duration: 0.3 }}
             >
               <a
-                href={`#${link.toLowerCase()}`}
-                onClick={() => setActiveLink(link)}
-                className="relative focus:outline-none"
+                href={
+                  link === "Contact" ? "/contact-us" : `#${link.toLowerCase()}`
+                }
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (link === "Contact") {
+                    navigate("/contact-us");
+                  } else {
+                    setActiveLink(link);
+                    const section = document.getElementById(link.toLowerCase());
+                    section?.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
                 {link}
                 <motion.div
@@ -120,6 +132,7 @@ const Header = () => {
           LOGO
         </a>
         <button
+          type="button"
           onClick={() => setIsMenuOpen(true)}
           aria-label="Open menu"
           title="Open menu"
@@ -154,6 +167,7 @@ const Header = () => {
               <header className="flex justify-between items-center mb-6">
                 <h3 className="font-bold text-xl">Menu</h3>
                 <button
+                  type="button"
                   onClick={() => setIsMenuOpen(false)}
                   aria-label="Close menu"
                   title="Close menu"
@@ -166,9 +180,23 @@ const Header = () => {
                 {navLinks.map((link) => (
                   <li key={link}>
                     <a
-                      href={`#${link.toLowerCase()}`}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-lg text-left w-full block"
+                      href={
+                        link === "Contact"
+                          ? "/contact-us"
+                          : `#${link.toLowerCase()}`
+                      }
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsMenuOpen(false);
+                        if (link === "Contact") {
+                          navigate("/contact-us");
+                        } else {
+                          const section = document.getElementById(
+                            link.toLowerCase()
+                          );
+                          section?.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
                     >
                       {link}
                     </a>
