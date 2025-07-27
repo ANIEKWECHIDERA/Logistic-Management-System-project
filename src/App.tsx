@@ -5,36 +5,35 @@ import CardSection from "./landingPage/CardSection";
 import Features from "./landingPage/Features";
 import TestimonialSection from "./landingPage/TestimonialSection";
 import ContactPage from "./landingPage/ContactPage";
+//import RegistationPage from "./pages/RegistationPage"
 import { Route, Routes } from "react-router-dom";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const HomePage = () => (
   <>
-    <Header />
     <div className="flex flex-col w-[90%] lg:w-full space-between lg:px-20 space-y-4 lg:space-y-32">
       <HeroSection />
       <Features />
       <CardSection />
     </div>
     <TestimonialSection />
-    <Footer />
+    
   </>
 );
 
-const Contact = () => (
-  <>
-    <Header />
-    <ContactPage />
-    <Footer />
-  </>
-);
+
 
 const App = () => {
   return (
     <div className="flex flex-col justify-center items-center font-montserrat">
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/contact-us" element={<Contact />} />
+        <Route path="/contact-us" element={<ContactPage />} />
+        <Route path="/signup" element={<RegistrationPage />} />
+        {/* <Route path="/login" element={<RegistrationPage />} /> */}
       </Routes>
+      <Footer />
     </div>
   );
 };

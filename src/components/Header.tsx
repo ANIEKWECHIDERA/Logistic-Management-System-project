@@ -3,14 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import Button2 from "./shared/Button2";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext"
 
 const navLinks = ["About", "Features", "Contact"];
 
+
 const Header = () => {
+  const {user, isAuthenticated, logout, isLoading} = useAuth();
+  const location = useLocation()
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState<string>("About");
   const sidebarRef = useRef<HTMLDivElement | null>(null);
+
+  const showSignUpBtn = !isAuthenticated && location.pathname !== "/signup";
+
 
   const handleOutsideClick = (e: MouseEvent) => {
     if (sidebarRef.current && !sidebarRef.current.contains(e.target as Node)) {
@@ -108,14 +116,28 @@ const Header = () => {
         </ul>
 
         <div className="flex space-x-4">
-          <Button2
-            text="Sign up"
-            classname="hover:bg-[#1E40AF] w-32 bg-[#2563EB] text-base lg:text-lg font-bold text-white"
-          />
-          <Button2
-            text="Log In"
+          {
+            isAuthenticated ? (<Button2
+            text="Profile"
             classname="hover:bg-[#1E40AF] w-32 bg-white border border-[#2563EB] text-[#2563EB] hover:text-white hover:border-white text-base lg:text-lg font-bold"
-          />
+          /> ):
+          (
+            <>
+            {showSignUpBtn && (
+            <Link to="/signup"> 
+              <Button2
+                text="Sign up"
+                classname="hover:bg-[#1E40AF] w-32 bg-[#2563EB] text-base lg:text-lg font-bold text-white"
+              />
+            </Link>
+            )}
+              <Button2
+                text="Log In"
+                classname="hover:bg-[#1E40AF] w-32 bg-white border border-[#2563EB] text-[#2563EB] hover:text-white hover:border-white text-base lg:text-lg font-bold"
+              />
+            </>  
+          )
+          }
         </div>
       </nav>
 
