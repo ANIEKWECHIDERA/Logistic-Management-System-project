@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import type { SubmitHandler } from 'react-hook-form'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { Link } from "react-router-dom"
 
 type FormValues = {
   company_name: string
@@ -25,7 +26,7 @@ const RegistrationPage = () => {
   }
   return (
     <div className="flex flex-col w-[90%] lg:w-full space-between space-y-5 lg:px-20 py-10">
-      <h1 className="text-4xl font-extrabold md:w-[50%]">Create a Logistics Company Account</h1>
+      <h1 className="text-5xl font-extrabold md:w-[50%]">Create a Logistics Company Account</h1>
       <p>Sign up to manage your fleet and deliveries with ease. You'll verify your account next</p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="max-w-[70%] mt-8 space-y-4 border p-6 rounded-md mb-21 ">
@@ -37,7 +38,7 @@ const RegistrationPage = () => {
           <label className="block font-bold text-sm" htmlFor="company_name">Company Name*</label>
           <input
             {...register('company_name', { required: 'Company name is required' })}
-            className="border p-2 w-full rounded-md"
+            className= {`border p-2 w-full rounded-md ${errors.company_name &&  "border-red-500"}`}
             placeholder="Company Name"
             id="company_name"
           />
@@ -57,7 +58,7 @@ const RegistrationPage = () => {
         </div>
 
         {/* email */}
-        <div>
+        <div className="space-y-1">
           <label className="block font-bold text-sm" htmlFor="email">Email*</label>
           <input
             type="email"
@@ -75,7 +76,7 @@ const RegistrationPage = () => {
           <input
             type="text"
             {...register('business_address', { required: true, min: 1 })}
-            className="border p-2 w-full rounded-md"
+            className= {`border p-2 w-full rounded-md ${errors.business_address &&  "border-red-500"}`}
             id="business_address"
           />
           {errors.business_address && <p className="text-red-500 text-[12px]">Please enter a valid address</p>}
@@ -87,7 +88,7 @@ const RegistrationPage = () => {
           <input
             type="number"
             {...register('phone_number', { required: true, min: 1 })}
-            className="border p-2 w-full rounded-md"
+            className={`border p-2 w-full rounded-md ${errors.phone_number &&  "border-red-500"}`}
             id="phone_number"
           />
           {errors.phone_number && <p className="text-red-500 text-[12px]">Please enter a valid Phone Number</p>}
@@ -96,7 +97,7 @@ const RegistrationPage = () => {
         {/* city */}
         <div>
           <label className="block font-bold text-sm" htmlFor="city">City*</label>
-          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md" id="city">
+          <select {...register('city', { required: true })} className={`border p-2 w-full rounded-md ${errors.city &&  "border-red-500"}`} id="city">
             <option value="">-- Select City --</option>
           </select>
           {errors.city && <p className="text-red-500 text-sm">Please select a city</p>}
@@ -109,7 +110,7 @@ const RegistrationPage = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 {...register('password', { required: true, minLength: 6 })}
-                className="border p-2 w-full pr-10"
+                className={`border p-2 w-full pr-10 ${errors.password &&  "border-red-500"}`}
                 placeholder="Enter password"
                 id="password"
               />
@@ -118,7 +119,7 @@ const RegistrationPage = () => {
                 onClick={() => setShowPassword(prev => !prev)}
                 className="absolute right-2 top-3.5 text-gray-600"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
               </button>
             </div>
             {errors.password && <p className="text-red-500 text-[12px]">Minimum 6 characters required</p>}
@@ -127,10 +128,10 @@ const RegistrationPage = () => {
         {/* state */}
         <div>
           <label className="block font-bold text-sm" htmlFor="state">State*</label>
-          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md" id="state">
+          <select {...register('state', { required: true })} className={`border p-2 w-full rounded-md ${errors.state &&  "border-red-500"}`}id="state">
             <option value="">-- State --</option>
           </select>
-          {errors.city && <p className="text-red-500 text-[]12px">Please select a state</p>}
+          {errors.state && <p className="text-red-500 text-[12px]">Please select a state</p>}
         </div>
 
         {/* Confirm Password with Toggle */}
@@ -140,8 +141,8 @@ const RegistrationPage = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 {...register('confirmPassword', { required: true, minLength: 6 })}
-                className="border p-2 w-full pr-10 rounded-md"
-                placeholder="Re-enter password"
+                className={`border p-2 w-full pr-10 rounded-md ${errors.confirmPassword &&  "border-red-500"}`}
+                placeholder="Re-enter Password"
                 htmlFor="confirm_password"
               />
               <button
@@ -149,18 +150,17 @@ const RegistrationPage = () => {
                 onClick={() => setShowPassword(prev => !prev)}
                 className="absolute right-2 top-3.5 text-gray-600"
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
               </button>
             </div>
             {errors.confrimPassword && <p className="text-red-500">Password does not match</p>}
-        </div>
-        
+        </div> 
 
       </div>
 
       {/* Agree to Terms */}
-      <div className="md:w-[50%] ">
-        <label className="px-10 text-sm" htmlFor="agree_to_terms">
+      <div className="md:w-[50%] gap-5 space-around flex flex-col text-center">
+        <label className=" text-sm" htmlFor="agree_to_terms">
           <input
             type="checkbox"
             {...register('agreeToTerms', { required: true })}
@@ -170,13 +170,20 @@ const RegistrationPage = () => {
           I agree to the terms and conditions
         </label>
         {errors.agreeToTerms && (
-          <p className="text-red-500">You must agree before submitting</p>
+          <p className="text-red-500 text-[12px]">You must agree before submitting</p>
         )}
-      </div>
 
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded w-[50%]">
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md w-full">
           Create Account
         </button>
+        <p>Already have an account? 
+        <Link to="/login" className="ml-2 font-bold text-[#1F2A44]">
+          Log In
+        </Link>
+        </p>
+
+      </div>
+
       </form>
     </div>
   )
