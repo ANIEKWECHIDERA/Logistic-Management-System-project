@@ -4,7 +4,7 @@ import HeroSection from "./landingPage/HeroSection";
 import CardSection from "./landingPage/CardSection";
 import Features from "./landingPage/Features";
 import TestimonialSection from "./landingPage/TestimonialSection";
-import ContactPage from "./landingPage/ContactPage";
+import ContactPage from "./pages/ContactPage";
 //import RegistationPage from "./pages/RegistationPage"
 import { Route, Routes } from "react-router-dom";
 import RegistrationPage from "./pages/RegistrationPage";
