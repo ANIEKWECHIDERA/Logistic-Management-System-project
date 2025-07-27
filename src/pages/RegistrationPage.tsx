@@ -34,64 +34,69 @@ const RegistrationPage = () => {
 
         {/* company name */}
         <div>
-          <label className="block font-bold text-sm">Company Name*</label>
+          <label className="block font-bold text-sm" htmlFor="company_name">Company Name*</label>
           <input
             {...register('company_name', { required: 'Company name is required' })}
             className="border p-2 w-full rounded-md"
             placeholder="Company Name"
+            id="company_name"
           />
           {errors.company_name && <p className="text-red-500 text-[12px]">{errors.company_name.message}</p>}
         </div>
 
         {/* business registration number */}
         <div>
-          <label className="block font-bold text-sm">Business Registration Number </label>
+          <label className="block font-bold text-sm" htmlFor="business_registration_number">Business Registration Number </label>
           <input
             type="number"
             {...register('business_registration_number', { required: false, min: 1 })}
             className="border p-2 w-full rounded-md"
+            id="business_registration_number"
           />
           {errors.business_registration_number && <p className="text-red-500 text-[12px]">Please enter a valid business registration number</p>}
         </div>
 
         {/* email */}
         <div>
-          <label className="block font-bold text-sm">Email*</label>
+          <label className="block font-bold text-sm" htmlFor="email">Email*</label>
           <input
             type="email"
             {...register('email', { required: true})}
             className="border p-2 w-full rounded-md"
             placeholder="Email"
+            id="email"
           />
           {errors.email ? <p className="text-red-500 text-[12px]">Please enter a valid Email Address</p> : <p className="text-[12px]">We'll send a verification code to this email</p>}
         </div>
 
         {/* business address */}
         <div>
-          <label className="block font-bold text-sm">Business Adddress*</label>
+          <label className="block font-bold text-sm" htmlFor="business_address">Business Adddress*</label>
           <input
             type="text"
             {...register('business_address', { required: true, min: 1 })}
             className="border p-2 w-full rounded-md"
+            id="business_address"
           />
           {errors.business_address && <p className="text-red-500 text-[12px]">Please enter a valid address</p>}
         </div>
 
         {/* Phone Number */}
         <div>
-          <label className="block font-bold text-sm">Phone Number* </label>
+          <label className="block font-bold text-sm" htmlFor="phone_number">Phone Number* </label>
           <input
             type="number"
             {...register('phone_number', { required: true, min: 1 })}
             className="border p-2 w-full rounded-md"
+            id="phone_number"
           />
           {errors.phone_number && <p className="text-red-500 text-[12px]">Please enter a valid Phone Number</p>}
         </div>
 
         {/* city */}
         <div>
-          <label className="block font-bold text-sm">City*</label>
-          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md">
+          <label className="block font-bold text-sm" htmlFor="city">City*</label>
+          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md" id="city">
             <option value="">-- Select City --</option>
           </select>
           {errors.city && <p className="text-red-500 text-sm">Please select a city</p>}
@@ -99,13 +104,14 @@ const RegistrationPage = () => {
 
         {/* Password with Toggle */}
         <div>
-            <label className="block font-bold text-sm">Password*</label>
+            <label className="block font-bold text-sm" htmlFor="password">Password*</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 {...register('password', { required: true, minLength: 6 })}
                 className="border p-2 w-full pr-10"
                 placeholder="Enter password"
+                id="password"
               />
               <button
                 type="button"
@@ -120,8 +126,8 @@ const RegistrationPage = () => {
 
         {/* state */}
         <div>
-          <label className="block font-bold text-sm">State*</label>
-          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md">
+          <label className="block font-bold text-sm" htmlFor="state">State*</label>
+          <select {...register('city', { required: true })} className="border p-2 w-full rounded-md" id="state">
             <option value="">-- State --</option>
           </select>
           {errors.city && <p className="text-red-500 text-[]12px">Please select a state</p>}
@@ -129,13 +135,14 @@ const RegistrationPage = () => {
 
         {/* Confirm Password with Toggle */}
         <div>
-            <label className="block font-bold text-sm">Confirm Password*</label>
+            <label className="block font-bold text-sm" htmlFor="confirm_password">Confirm Password*</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 {...register('confirmPassword', { required: true, minLength: 6 })}
                 className="border p-2 w-full pr-10 rounded-md"
                 placeholder="Re-enter password"
+                htmlFor="confirm_password"
               />
               <button
                 type="button"
@@ -153,11 +160,12 @@ const RegistrationPage = () => {
 
       {/* Agree to Terms */}
       <div className="md:w-[50%] ">
-        <label className="px-10 text-sm">
+        <label className="px-10 text-sm" htmlFor="agree_to_terms">
           <input
             type="checkbox"
             {...register('agreeToTerms', { required: true })}
             className="m-[10px] "
+            id="agree_to_terms"
           />
           I agree to the terms and conditions
         </label>
