@@ -4,7 +4,7 @@ import Features from "../landingPage/Features";
 import TestimonialSection from "../landingPage/TestimonialSection";
 
 
-const LandingPage = () => {
+const HomePage = () => {
   return (
     <div>
         <div className="flex flex-col w-[90%] lg:w-full space-between lg:px-20 space-y-4 lg:space-y-32">
@@ -17,4 +17,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default HomePage
